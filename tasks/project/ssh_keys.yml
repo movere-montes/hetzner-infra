@@ -1,5 +1,5 @@
 ---
-- name: Manage SSH keys in Hetzner project [b73a620]
+- name: Manage SSH keys in Hetzner project
   hetzner.hcloud.ssh_key:
     name: "{{ item.name }}"
     public_key: "{{ item.public_key | default(omit) }}"
