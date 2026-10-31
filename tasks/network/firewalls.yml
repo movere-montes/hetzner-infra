@@ -1,5 +1,5 @@
 ---
-- name: Manage firewalls
+- name: Manage firewalls [5c19e75]
   hetzner.hcloud.firewall:
     name: "{{ item.name }}"
     rules: "{{ item.rules | default([]) }}"

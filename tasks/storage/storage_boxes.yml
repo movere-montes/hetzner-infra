@@ -1,5 +1,5 @@
 ---
-- name: "Manage storage boxes for {{ inventory_hostname }}"
+- name: "Manage storage boxes for {{ inventory_hostname }} [99cff18]"
   hetzner.hcloud.storage_box:
     name: "{{ item.name }}"
     product: "{{ item.product }}"
@@ -13,7 +13,7 @@
   when: hetzner_server_state == 'present'
   register: hetzner_storage_box_registered
 
-- name: "Expose storage box facts for {{ inventory_hostname }}"
+- name: "Expose storage box facts for {{ inventory_hostname }} [e2c7123]"
   ansible.builtin.set_fact:
     hetzner_storage_box_devices: >-
       {{

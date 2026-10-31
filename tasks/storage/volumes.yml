@@ -1,5 +1,5 @@
 ---
-- name: "Manage volumes for {{ inventory_hostname }}"
+- name: "Manage volumes for {{ inventory_hostname }} [3ab1bfa]"
   hetzner.hcloud.volume:
     name: "{{ item.name }}"
     size: "{{ item.size }}"
@@ -15,7 +15,7 @@
   when: hetzner_server_state == 'present'
   register: hetzner_volume_registered
 
-- name: "Expose volume facts for {{ inventory_hostname }}"
+- name: "Expose volume facts for {{ inventory_hostname }} [6f59d4f]"
   ansible.builtin.set_fact:
     hetzner_volume_devices: >-
       {{

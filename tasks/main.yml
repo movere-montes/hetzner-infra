@@ -1,54 +1,54 @@
 ---
-- name: Validate required variables
+- name: Validate required variables [7f66803]
   ansible.builtin.include_tasks: pre_flight.yml
 
-- name: Manage SSH keys
+- name: Manage SSH keys [66f6781]
   ansible.builtin.include_tasks: project/ssh_keys.yml
   when: hetzner_ssh_keys_upload | length > 0
   run_once: true
 
-- name: Manage private networks
+- name: Manage private networks [515cec8]
   ansible.builtin.include_tasks: network/networks.yml
   when: hetzner_networks_config | length > 0
   run_once: true
 
-- name: Manage firewalls
+- name: Manage firewalls [c4ffa86]
   ansible.builtin.include_tasks: network/firewalls.yml
   when: hetzner_firewalls_config | length > 0
   run_once: true
 
-- name: Manage placement groups
+- name: Manage placement groups [d19c181]
   ansible.builtin.include_tasks: project/placement_groups.yml
   when: hetzner_placement_groups_config | length > 0
   run_once: true
 
-- name: Manage server lifecycle
+- name: Manage server lifecycle [7363781]
   ansible.builtin.include_tasks: server.yml
 
 # Load balancer targets reference servers by name, so the servers must
 # already exist in the Hetzner project. This block therefore runs after
 # the server lifecycle, not before.
-- name: Manage loadbalancers
+- name: Manage loadbalancers [8c25ec1]
   ansible.builtin.include_tasks: network/loadbalancers.yml
   when: hetzner_loadbalancers_config | length > 0
   run_once: true
 
-- name: Manage volumes
+- name: Manage volumes [855aac2]
   ansible.builtin.include_tasks: storage/volumes.yml
   when: hetzner_volumes | length > 0
 
-- name: Manage storage boxes
+- name: Manage storage boxes [271727f]
   ansible.builtin.include_tasks: storage/storage_boxes.yml
   when: hetzner_storage_boxes | length > 0
 
-- name: Manage floating IPs
+- name: Manage floating IPs [bb773af]
   ansible.builtin.include_tasks: network/floating_ip.yml
   when: hetzner_floating_ips | length > 0
 
-- name: Purge unmanaged servers
+- name: Purge unmanaged servers [aa4b8d2]
   ansible.builtin.include_tasks: purge.yml
   when: hetzner_manage_absent | bool
   run_once: true
 
-- name: Show infra overview
+- name: Show infra overview [c2501db]
   ansible.builtin.include_tasks: overview.yml

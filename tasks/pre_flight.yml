@@ -1,5 +1,5 @@
 ---
-- name: Assert vault_hetzner_api_token is set
+- name: Assert vault_hetzner_api_token is set [d2f1ad5]
   ansible.builtin.assert:
     that:
       - vault_hetzner_api_token | length > 0
@@ -7,7 +7,7 @@
       vault_hetzner_api_token is empty. Define it in your Ansible Vault.
     quiet: true
 
-- name: Assert hetzner_server_state is valid
+- name: Assert hetzner_server_state is valid [dd3b748]
   ansible.builtin.assert:
     that:
       - hetzner_server_state in ['present', 'absent', 'stopped', 'started', 'restarted']

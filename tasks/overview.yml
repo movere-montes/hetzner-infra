@@ -1,5 +1,5 @@
 ---
-- name: Show final server inventory
+- name: Show final server inventory [eccd9a0]
   ansible.builtin.debug:
     msg:
       - 'Server         : {{ inventory_hostname }}'

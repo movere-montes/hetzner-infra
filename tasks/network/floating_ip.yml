@@ -1,5 +1,5 @@
 ---
-- name: "Manage floating IPs for {{ inventory_hostname }}"
+- name: "Manage floating IPs for {{ inventory_hostname }} [54f423c]"
   hetzner.hcloud.floating_ip:
     name: "{{ item.name }}"
     type: "{{ item.type | default('ipv4') }}"
@@ -12,7 +12,7 @@
     label: "{{ item.name }}"
   register: hetzner_floating_ip_registered
 
-- name: "Assign floating IPs to {{ inventory_hostname }}"
+- name: "Assign floating IPs to {{ inventory_hostname }} [15f57c1]"
   hetzner.hcloud.floating_ip:
     name: "{{ item.item.name }}"
     server: "{{ inventory_hostname }}"
@@ -26,7 +26,7 @@
     - item.item.assign | default(true) | bool
     - (item.hcloud_floating_ip.server.name | default('')) != inventory_hostname
 
-- name: "Expose floating IP facts for {{ inventory_hostname }}"
+- name: "Expose floating IP facts for {{ inventory_hostname }} [2977f29]"
   ansible.builtin.set_fact:
     hetzner_floating_ip_addresses: >-
       {{

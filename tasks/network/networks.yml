@@ -1,5 +1,5 @@
 ---
-- name: Manage private networks
+- name: Manage private networks [cd6f7b3]
   hetzner.hcloud.network:
     name: "{{ item.name }}"
     ip_range: "{{ item.ip_range }}"
@@ -10,7 +10,7 @@
   loop_control:
     label: "{{ item.name }}"
 
-- name: Manage network subnets
+- name: Manage network subnets [e2b8ab5]
   hetzner.hcloud.subnetwork:
     network: "{{ item.0.name }}"
     ip_range: "{{ item.1.ip_range }}"
